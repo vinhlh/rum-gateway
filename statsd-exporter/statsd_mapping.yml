@@ -1,0 +1,33 @@
+mappings:
+- match: rum\.(shop|shopmobile)\.live\.(\w+)\.(\w+)\.(requestStart|responseStart|responseEnd|domContentLoadedEventEnd|loadEventEnd)
+  match_type: regex
+  name: "rum_navigation_timing_${4}_seconds"
+  labels:
+    platform: "$1"
+    country: "$2"
+    page_type: "$3"
+    env: "live"
+- match: rum\.(shop|shopmobile)\.live\.(\w+)\.(\w+)\.(\w+)\.(opened|headersReceived|loading|done)
+  match_type: regex
+  name: "rum_ajax_timing_${5}_seconds"
+  labels:
+    platform: "$1"
+    country: "$2"
+    page: "${3}/${4}"
+    env: "live"
+- match: rum\.(shop|shopmobile)\.live\.(\w+)\.users\.ajax\.(\w+)\.(\w+)
+  match_type: regex
+  name: "rum_users_ajax_timing_seconds"
+  labels:
+    platform: "$1"
+    country: "$2"
+    page: "${3}/${4}"
+    env: "live"
+- match: rum\.(shop|shopmobile)\.live\.(\w+)\.resources\.(\w+)\.(startTime|duration)
+  match_type: regex
+  name: "rum_resource_timing_${4}_seconds"
+  labels:
+    platform: "$1"
+    country: "$2"
+    page: "$3"
+    env: "live"
