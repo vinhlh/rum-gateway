@@ -1,6 +1,6 @@
 # RUM Gateway
 
-Receive raw statsd metrics via a HTTP endpoint, and forward them to ![statsd](https://github.com/etsy/statsd) and ![statsd_exporter](https://github.com/prometheus/statsd_exporter).
+Receive raw statsd metrics via a HTTP endpoint, and forward them to [statsd](https://github.com/etsy/statsd) and [statsd_exporter](https://github.com/prometheus/statsd_exporter).
 
 ## Features
 
