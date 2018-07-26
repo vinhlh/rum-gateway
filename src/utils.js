@@ -16,6 +16,9 @@ const initCollectors = (collectorConfigs, globalTags) =>
       makeSendMetrics({ host, port, globalTags })
     )
 
+const fromTagObjectToArray = tags =>
+  Object.entries(tags).map(([key, value]) => `${key}:${value}`)
+
 const parseGlobalTagsFromRequest = request => {
   const userAgent = parseUserAgent(request.get('User-Agent'))
   const { browser, device, os } = userAgent
@@ -23,14 +26,14 @@ const parseGlobalTagsFromRequest = request => {
   const appVersion = request.get('X-App-Version')
   const isCanary = request.get('X-Is-Canary')
 
-  return {
+  return fromTagObjectToArray({
     browser: browser.name,
     browser_version: browser.version,
     os: os.name,
     os_version: os.version,
     app_version: appVersion || NOT_AVAILABLE,
     canary: isCanary || NOT_AVAILABLE
-  }
+  })
 }
 
 module.exports = {
