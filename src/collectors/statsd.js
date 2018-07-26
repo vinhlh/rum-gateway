@@ -1,6 +1,6 @@
 const StatsD = require('node-statsd')
 
-const { TYPE_COUNTER, TYPE_TIMING } = require('../utils')
+const { TYPE_COUNTER, TYPE_TIMING } = require('../constants')
 
 const makeSendMetrics = configs => metrics => {
   const { host, port } = configs

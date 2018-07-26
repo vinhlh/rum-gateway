@@ -28,9 +28,9 @@ app.get('/healthcheck', (req, res) =>
 app.post('/v1/raw', (req, res) => {
   res.status(204).send()
 
-
   const metrics = parseMetricsFromText(req.body)
   const tags = parseGlobalTagsFromRequest(req)
+
   const collectors = initCollectors(collectorConfigs, tags)
 
   collectors.forEach(sendMetrics => sendMetrics(metrics))
