@@ -1,0 +1,13 @@
+version: '2'
+
+services:
+  statsd_exporter:
+    build: ./statsd-exporter
+    ports:
+      - "9102:9102"
+      - "9125:9125"
+      - "9125:9125/udp"
+  rum_gateway:
+    build: .
+    ports:
+      - "3000:3000"
